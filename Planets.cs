@@ -125,7 +125,11 @@ namespace StarShip_program
             return planets;
         }
 
-        public int InHabitLand()
+        /// <summary>
+        /// Gets the percentage of the surface area
+        /// </summary>
+        /// <returns></returns>
+        public int InHabitabelLand()
         {
             var rnd = new Random();
 
@@ -189,12 +193,10 @@ namespace StarShip_program
 
         private void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
-            if (InHabitLand() > 50)
+            if (InHabitabelLand() > 50)
             {
-                var fileName = $"Colonization {DateTime.Now:ddMMyyyy-HHmmss}.txt";
-                var list = $"{InHabitLand()}% of the surface colonized at {0}";
+                var list = $"{InHabitabelLand()}% of the surface colonized at {0}";
                 Console.WriteLine(list, e.SignalTime);
-                File.WriteAllText(@"C:/Users/ndlazim1/Desktop/StarShip/" + fileName + "", list);
 
             }
 

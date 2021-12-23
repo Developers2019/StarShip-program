@@ -24,25 +24,44 @@ namespace StarShip_program
 
         public static void Main(string[] args)
         {
-            var fileName = $"StarShip {DateTime.Now:ddMMyyyy-HHmmss}.txt";
+            try
+            {
+                string fileName = $"StarShip {DateTime.Now:ddMMyyyy-HHmmss}.txt";
 
-            var obj = new Planets();
-            var rnd = new Random();
+                Planets obj = new Planets();
+                Random rnd = new Random();
 
-            Console.WriteLine(obj.GenerateNewPlanet());
-            var list = obj.GeneratePlanets();
-            list.Add(obj.GenerateNewPlanet());
-            list.ForEach(i => Console.WriteLine(i));
+                List<string> list = obj.GeneratePlanets();
+                list.Add(obj.GenerateNewPlanet());
+                list.ForEach(i => Console.WriteLine(i));
 
-            Console.WriteLine("\nPlease enter path to save file.");
+                Console.WriteLine("\nPlease enter path to save file.");
+                var path = Console.ReadLine();
 
-            var path = Console.ReadLine();
+                //File.WriteAllLines(@"C:/Users/ndlazim1/Desktop/StarShip/" + fileName + "", list);
+                File.WriteAllLines($"{path}{fileName}" + "", list);
 
-            //File.WriteAllLines(@"C:/Users/ndlazim1/Desktop/StarShip/" + fileName + "", list);
-            File.WriteAllLines($"{path}{fileName}" + "", list);
+                Console.WriteLine("file saved successfully.");
 
-            Console.WriteLine("file saved successfully.");
+                Console.WriteLine("\nPlease enter path to upload file.");
+                var newPath = Console.ReadLine();
 
+                //string[] lines = System.IO.File.ReadAllLines(@"C:\Users\ndlazim1\Desktop\StarShip\" + fileName);
+                string[] lines = System.IO.File.ReadAllLines($"{newPath}{fileName}");
+
+                // Display the file contents by using a foreach loop.
+                foreach (string line in lines)
+                {
+                    //get planets you have to travel to and colonize to achive the largest amout of colonized space
+                    Console.WriteLine(line);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.ToString());
+
+            }
 
         }
 

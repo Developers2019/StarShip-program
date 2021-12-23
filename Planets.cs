@@ -114,7 +114,7 @@ namespace StarShip_program
                     m.Add(PlanetOrMonster());
                 }
                 SetTimer();
-                string results = $"{feedback}\nHabitable: {YesorNo(IsHabitable())}\nCoordinates:\n{Coordinates}\nSurface Area: {planetSurfaceArea}\nPercentage:{perc}\n //////////////////////////";
+                string results = $"{feedback}\nHabitable: {YesorNo(IsHabitable())}\nCoordinates:\n{Coordinates}\nSurface Area: {planetSurfaceArea}\n //////////////////////////";
 
                 planets.Add(results);
 
